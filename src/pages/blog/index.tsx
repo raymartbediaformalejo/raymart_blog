@@ -47,12 +47,16 @@ const Blogs = () => {
         </div>
 
         {/* BLOGS */}
-        <div className="mt-20">
-          <div className="p-6 rounded-lg text-re bg-light-blue/20">
-            <img className="rounded-t-lg" src="/img2.png" alt="blog image" />
-            <h3 className="mt-4 text-2xl font-bold text-dark-blue2">
-              Mastering minimalism an layering complexity with strategy game
-            </h3>
+        <section className="mt-20">
+          <article className="p-6 rounded-lg text-re bg-light-blue/20">
+            <figure>
+              <img className="rounded-t-lg" src="/img2.png" alt="blog image" />
+              <figcaption>
+                <h2 className="mt-4 text-2xl font-bold text-dark-blue2">
+                  Mastering minimalism an layering complexity with strategy game
+                </h2>
+              </figcaption>
+            </figure>
             <p className="text-sm text-gray">July 14, 2023</p>
 
             <div className="flex gap-1 mt-2">
@@ -80,8 +84,8 @@ const Blogs = () => {
             <Button className="mt-4" variant={"primary"} size={"lgRoundFull"}>
               Read more
             </Button>
-          </div>
-        </div>
+          </article>
+        </section>
       </div>
     </Fragment>
   );

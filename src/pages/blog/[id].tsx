@@ -7,13 +7,17 @@ import { title } from "process";
 const Blogs = () => {
   return (
     <Fragment>
-      <div className="px-4 pt-5">
+      <section className="px-4 pt-5">
         {/* BLOGS */}
-        <div className="mt-20">
-          <img className="rounded-lg" src="/img2.png" alt="blog image" />
-          <h3 className="mt-4 text-2xl font-bold text-dark-blue2">
-            Mastering minimalism an layering complexity with strategy game
-          </h3>
+        <article className="mt-20">
+          <figure>
+            <img className="rounded-lg" src="/img2.png" alt="blog image" />
+            <figcaption>
+              <h3 className="mt-4 text-2xl font-bold text-dark-blue2">
+                Mastering minimalism an layering complexity with strategy game
+              </h3>
+            </figcaption>
+          </figure>
 
           <div className="flex gap-1 mt-2">
             {["html", "css", "js"].map((tag) => {
@@ -101,7 +105,7 @@ const Blogs = () => {
           </div>
 
           {/* RELATED ARTICLES */}
-          <div className="text-[#4b5563] leading-7 mt-28">
+          <footer className="text-[#4b5563] leading-7 mt-28">
             <h3>Related Aritcles:</h3>
             <ul className="list-disc list-inside">
               {[
@@ -128,9 +132,9 @@ const Blogs = () => {
                 );
               })}
             </ul>
-          </div>
-        </div>
-      </div>
+          </footer>
+        </article>
+      </section>
     </Fragment>
   );
 };

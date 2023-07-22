@@ -27,12 +27,15 @@ export default function Home() {
         {/* CARDS */}
         <div className="flex flex-col gap-10">
           {/* CARD ITEM */}
-
-          <div className="p-6 rounded-lg text-re bg-light-blue/20">
-            <img className="rounded-t-lg" src="/img2.png" alt="blog image" />
-            <h3 className="mt-4 text-2xl font-bold text-dark-blue2">
-              Mastering minimalism an layering complexity with strategy game
-            </h3>
+          <article className="p-6 rounded-lg text-re bg-light-blue/20">
+            <figure>
+              <img className="rounded-t-lg" src="/img2.png" alt="blog image" />
+              <figcaption>
+                <h3 className="mt-4 text-2xl font-bold text-dark-blue2">
+                  Mastering minimalism an layering complexity with strategy game
+                </h3>
+              </figcaption>
+            </figure>
             <p className="text-sm text-gray">July 14, 2023</p>
 
             <div className="flex gap-1 mt-2">
@@ -60,12 +63,16 @@ export default function Home() {
             <Button className="mt-10" variant={"primary"} size={"lgRoundFull"}>
               Read more
             </Button>
-          </div>
-          <div className="p-6 rounded-lg text-re bg-light-blue/20">
-            <img className="rounded-t-lg" src="/img2.png" alt="blog image" />
-            <h3 className="mt-4 text-2xl font-bold text-dark-blue2">
-              Mastering minimalism an layering complexity with strategy game
-            </h3>
+          </article>
+          <article className="p-6 rounded-lg text-re bg-light-blue/20">
+            <figure>
+              <img className="rounded-t-lg" src="/img2.png" alt="blog image" />
+              <figcaption>
+                <h3 className="mt-4 text-2xl font-bold text-dark-blue2">
+                  Mastering minimalism an layering complexity with strategy game
+                </h3>
+              </figcaption>
+            </figure>
             <p className="text-sm text-gray">July 14, 2023</p>
 
             <div className="flex gap-1 mt-2">
@@ -93,12 +100,16 @@ export default function Home() {
             <Button className="mt-10" variant={"primary"} size={"lgRoundFull"}>
               Read more
             </Button>
-          </div>
-          <div className="p-6 rounded-lg text-re bg-light-blue/20">
-            <img className="rounded-t-lg" src="/img2.png" alt="blog image" />
-            <h3 className="mt-4 text-2xl font-bold text-dark-blue2">
-              Mastering minimalism an layering complexity with strategy game
-            </h3>
+          </article>
+          <article className="p-6 rounded-lg text-re bg-light-blue/20">
+            <figure>
+              <img className="rounded-t-lg" src="/img2.png" alt="blog image" />
+              <figcaption>
+                <h3 className="mt-4 text-2xl font-bold text-dark-blue2">
+                  Mastering minimalism an layering complexity with strategy game
+                </h3>
+              </figcaption>
+            </figure>
             <p className="text-sm text-gray">July 14, 2023</p>
 
             <div className="flex gap-1 mt-2">
@@ -126,7 +137,45 @@ export default function Home() {
             <Button className="mt-10" variant={"primary"} size={"lgRoundFull"}>
               Read more
             </Button>
-          </div>
+          </article>
+          <article className="p-6 rounded-lg text-re bg-light-blue/20">
+            <figure>
+              <img className="rounded-t-lg" src="/img2.png" alt="blog image" />
+              <figcaption>
+                <h3 className="mt-4 text-2xl font-bold text-dark-blue2">
+                  Mastering minimalism an layering complexity with strategy game
+                </h3>
+              </figcaption>
+            </figure>
+            <p className="text-sm text-gray">July 14, 2023</p>
+
+            <div className="flex gap-1 mt-2">
+              {["html", "css", "js"].map((tag) => {
+                return (
+                  <Badge
+                    key={tag}
+                    variant={"tags"}
+                    style={{
+                      color: "rgb(100 116 139)",
+                      fontWeight: "normal",
+                    }}
+                  >
+                    {`#${tag}`}
+                  </Badge>
+                );
+              })}
+            </div>
+
+            <p className="mt-5 text-grayDark">
+              Here’s why the developers are making games for people who don’t
+              have time for the genre. Here’s why the developers are making
+              games for people who don’t have time for the genre.{" "}
+            </p>
+            <Button className="mt-10" variant={"primary"} size={"lgRoundFull"}>
+              Read more
+            </Button>
+          </article>
+          \
         </div>
       </section>
     </main>

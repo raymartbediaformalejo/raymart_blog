@@ -10,7 +10,7 @@ import Link from "next/link";
 const Layout = ({ children }: { children: ReactNode }) => {
   return (
     <Fragment>
-      <nav
+      <header
         className="absolute top-0 left-0 z-40 w-full bg-local bg-top bg-no-repeat hero"
         // style={{ backgroundImage: 'url("/grid.png")' }}
       >
@@ -23,21 +23,23 @@ const Layout = ({ children }: { children: ReactNode }) => {
               <Menu color="#19304E" size={24} />
             </SheetTrigger>
             <SheetContent>
-              <ul>
-                <li>
-                  <a href="#">Home</a>
-                </li>
-                <li>
-                  <a href="#">Blog</a>
-                </li>
-                <li>
-                  <a href="#">About</a>
-                </li>
-              </ul>
+              <nav>
+                <ul>
+                  <li>
+                    <a href="#">Home</a>
+                  </li>
+                  <li>
+                    <a href="#">Blog</a>
+                  </li>
+                  <li>
+                    <a href="#">About</a>
+                  </li>
+                </ul>
+              </nav>
             </SheetContent>
           </Sheet>
         </div>
-      </nav>
+      </header>
       {children}
       <footer className="flex flex-col gap-16 px-4 pt-16 pb-4 mt-40 text-center text-white bg-blue">
         <div className="">

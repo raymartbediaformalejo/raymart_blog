@@ -10,6 +10,16 @@ import dynamic from "next/dynamic";
 
 import { Fragment } from "react";
 import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import {
+  Select,
+  SelectGroup,
+  SelectContent,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 const QuillNoSSRWrapper = dynamic(import("react-quill"), {
   ssr: false,
@@ -84,105 +94,197 @@ const PostPage = () => {
   };
   return (
     <Fragment>
-      <div className="px-4 pt-20">
-        <h2 className="font-semibold text-blue text-[20px] mb-6">
+      <div className="pt-20 ">
+        <h2 className="mx-4 font-semibold text-blue text-[20px] mb-4">
           Create blog post
         </h2>
-        {/* CATEGORY */}
-        <label htmlFor="categories" className="text-[#747577] text-sm">
-          Category:
-        </label>
-        <Autocomplete
-          size="small"
-          multiple
-          id="categories"
-          options={categories}
-          disableCloseOnSelect
-          getOptionLabel={(option) => option.title}
-          renderOption={(props, option, { selected }) => (
-            <li {...props}>
-              <Checkbox
-                icon={icon}
-                checkedIcon={checkedIcon}
-                style={{ marginRight: 8 }}
-                checked={selected}
+        <form className="flex flex-col gap-8">
+          <div className="bg-white">
+            <div className="flex flex-col gap-4 px-4 py-8">
+              {/* CATEGORY */}
+              <div>
+                <label
+                  htmlFor="categories"
+                  className="text-[rgb(116,117,119)] text-sm"
+                >
+                  Category:
+                </label>
+                <Autocomplete
+                  sx={{
+                    marginTop: "4px",
+                    outlineOffset: "3px solid rgb(14 165 233)",
+                    "&:focus-within": {
+                      outline: "3px solid rgb(14 165 233)",
+                      borderRadius: "4px",
+                    },
+                  }}
+                  size="small"
+                  multiple
+                  id="categories"
+                  options={categories}
+                  disableCloseOnSelect
+                  getOptionLabel={(option) => option.title}
+                  renderOption={(props, option, { selected }) => (
+                    <li {...props}>
+                      <Checkbox
+                        icon={icon}
+                        checkedIcon={checkedIcon}
+                        style={{ marginRight: 8 }}
+                        checked={selected}
+                      />
+                      {option.title}
+                    </li>
+                  )}
+                  renderInput={(params) => <TextField {...params} />}
+                />
+              </div>
+
+              {/* TOPIC */}
+              <div>
+                <label htmlFor="topics" className="text-[#747577] text-sm">
+                  Topic:
+                </label>
+
+                <Autocomplete
+                  sx={{
+                    marginTop: "4px",
+                    outlineOffset: "3px solid rgb(14 165 233)",
+                    "&:focus-within": {
+                      outline: "3px solid rgb(14 165 233)",
+                      borderRadius: "4px",
+                    },
+                  }}
+                  size="small"
+                  multiple
+                  id="topics"
+                  options={topics}
+                  disableCloseOnSelect
+                  getOptionLabel={(option) => option.title}
+                  renderOption={(props, option, { selected }) => (
+                    <li {...props}>
+                      <Checkbox
+                        icon={icon}
+                        checkedIcon={checkedIcon}
+                        style={{ marginRight: 8 }}
+                        checked={selected}
+                      />
+                      {option.title}
+                    </li>
+                  )}
+                  renderInput={(params) => <TextField {...params} />}
+                />
+              </div>
+
+              {/* TITLE */}
+              <div>
+                <label htmlFor="title" className="text-[#747577] text-sm">
+                  Title:
+                </label>
+                <Input
+                  id="title"
+                  className="hover:border-[#000] focus:border-blue mt-1"
+                />
+              </div>
+
+              {/* SUMMARY */}
+              <div>
+                <label htmlFor="summary" className="text-[#747577] text-sm ">
+                  Summary:
+                </label>
+                <Input
+                  id="summary"
+                  className="hover:border-[#000] focus:border-blue mt-1"
+                />
+              </div>
+
+              {/* COVER PHOTO */}
+              <div>
+                <label
+                  htmlFor="cover-photo"
+                  className="font-[300] text-[#747577] text-sm"
+                >
+                  Cover photo:
+                </label>
+                <label className="block">
+                  <span className="select-none sr-only">
+                    Choose profile photo
+                  </span>
+                  <input
+                    id="cover-photo"
+                    type="file"
+                    className="mt-1 block w-full text-sm text-grayDark file:mr-4 file:py-2 file:px-3 file:rounded-md file:border file:border-gray/50 file:text-sm file:font-semibold file:bg-[#f3f3f3] file:text-gray/90 hover:file:bg-[#F7F7F7]/10 "
+                  />
+                </label>
+              </div>
+
+              {/* IS FEATURED BLOG */}
+              <div className="mt-2">
+                <Checkbox id="isFeatured" className="p-0 m-0 " />
+                <label
+                  htmlFor="isFeatured"
+                  className="ml-2 text-[16px] text-gray font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 select-none"
+                >
+                  Is featured blog post?
+                </label>
+              </div>
+
+              {/* EDITOR */}
+              <QuillNoSSRWrapper
+                className="mt-4 overflow-hidden bg-white rounded-sm"
+                theme="snow"
+                modules={modules}
+                formats={formats}
+                value={editorValue}
+                onChange={handleEditorChange}
               />
-              {option.title}
-            </li>
-          )}
-          renderInput={(params) => <TextField {...params} />}
-        />
+            </div>
+          </div>
 
-        {/* TOPIC */}
-        <label htmlFor="topics" className="text-[#747577] text-sm">
-          Topic:
-        </label>
+          {/* PUBLISH */}
+          <div className="bg-white">
+            <div className="mx-4 my-8">
+              <h3 className="mb-3 text-lg font-inter text-grayDark/90">
+                Publish
+              </h3>
+              <div className="flex flex-col gap-4">
+                <div className="flex gap-6">
+                  <Button className="bg-[#f3f3f3] text-gray/90 border border-gray/40 hover:bg-[#F7F7F7]/10">
+                    Save Draft
+                  </Button>
+                  <Button className="bg-[#f3f3f3] text-gray/90 border border-gray/30 hover:bg-[#F7F7F7]/10">
+                    Preview
+                  </Button>
+                </div>
+                <div className="flex items-center gap-2">
+                  <p className="text-[#747577] text-sm">Status:</p>
+                  <p>Draft</p>
+                </div>
 
-        <Autocomplete
-          size="small"
-          multiple
-          id="topics"
-          options={topics}
-          disableCloseOnSelect
-          getOptionLabel={(option) => option.title}
-          renderOption={(props, option, { selected }) => (
-            <li {...props}>
-              <Checkbox
-                icon={icon}
-                checkedIcon={checkedIcon}
-                style={{ marginRight: 8 }}
-                checked={selected}
-              />
-              {option.title}
-            </li>
-          )}
-          renderInput={(params) => <TextField {...params} />}
-        />
+                {/* VISIBILITY */}
+                <div>
+                  <label className="text-[#747577] text-sm block mb-1">
+                    Visibility:
+                  </label>
+                  <Select>
+                    <SelectTrigger>
+                      <SelectValue placeholder="Select visibility" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectGroup>
+                        <SelectItem value="public">Public</SelectItem>
+                        <SelectItem value="private">Private</SelectItem>
+                      </SelectGroup>
+                    </SelectContent>
+                  </Select>
+                </div>
 
-        {/* TITLE */}
-        <label htmlFor="title" className="text-[#747577] text-sm">
-          Title:
-        </label>
-        <Input id="title" />
-        <label htmlFor="summary" className="text-[#747577] text-sm">
-          Summary:
-        </label>
-        <Input id="summary" />
-
-        {/* COVER PHOTO */}
-        <div>
-          <label htmlFor="cover-photo" className="text-[#747577] text-sm">
-            Cover photo:
-          </label>
-          <label className="block">
-            <span className="sr-only">Choose profile photo</span>
-            <input
-              id="cover-photo"
-              type="file"
-              className="block w-full text-sm text-grayDark file:mr-4 file:py-2 file:px-4 file:rounded-full file:border file:border-[#747577]/30 file:text-sm file:font-semibold file:bg-blue/10 file:text-blue hover:file:bg-blue/20 "
-            />
-          </label>
-        </div>
-
-        {/* IS FEATURED BLOG */}
-        <div className="">
-          <Checkbox id="isFeatured" className="p-0 m-0 " />
-          <label
-            htmlFor="isFeatured"
-            className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-          >
-            Is featured blog post?
-          </label>
-        </div>
-
-        {/* EDITOR */}
-        <QuillNoSSRWrapper
-          theme="snow"
-          modules={modules}
-          formats={formats}
-          value={editorValue}
-          onChange={handleEditorChange}
-        />
+                <Button className="mt-8" type="submit">
+                  Publish
+                </Button>
+              </div>
+            </div>
+          </div>
+        </form>
       </div>
     </Fragment>
   );
