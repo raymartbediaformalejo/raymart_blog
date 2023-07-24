@@ -22,6 +22,7 @@ module.exports = {
       sky: "#06B6D4",
       "light-blue": "#8BADDA",
       yellow: "#C78705",
+      green: "#22c55e",
       gray: "rgb(100 116 139)",
       grayDark: "#445771",
 

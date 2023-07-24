@@ -45,7 +45,7 @@ const topics = [
   { title: "NodeJS" },
   { title: "Non-technical discussion" },
 ];
-
+const visibilityOptions = ["Private", "Public"];
 const modules = {
   toolbar: [
     [{ header: [1, 2, 3, 4, 5, 6] }],
@@ -248,10 +248,16 @@ const PostPage = () => {
               </h3>
               <div className="flex flex-col gap-4">
                 <div className="flex gap-6">
-                  <Button className="bg-[#f3f3f3] text-gray/90 border border-gray/40 hover:bg-[#F7F7F7]/10">
+                  <Button
+                    size="sm"
+                    className="bg-[#f3f3f3] text-gray/90 border border-gray/40 hover:bg-[#F7F7F7]/10"
+                  >
                     Save Draft
                   </Button>
-                  <Button className="bg-[#f3f3f3] text-gray/90 border border-gray/30 hover:bg-[#F7F7F7]/10">
+                  <Button
+                    size="sm"
+                    className="bg-[#f3f3f3] text-gray/90 border border-gray/30 hover:bg-[#F7F7F7]/10"
+                  >
                     Preview
                   </Button>
                 </div>
@@ -262,25 +268,36 @@ const PostPage = () => {
 
                 {/* VISIBILITY */}
                 <div>
-                  <label className="text-[#747577] text-sm block mb-1">
+                  <label
+                    htmlFor="visibility"
+                    className="text-[rgb(116,117,119)] text-sm"
+                  >
                     Visibility:
                   </label>
-                  <Select>
-                    <SelectTrigger>
-                      <SelectValue placeholder="Select visibility" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectGroup>
-                        <SelectItem value="public">Public</SelectItem>
-                        <SelectItem value="private">Private</SelectItem>
-                      </SelectGroup>
-                    </SelectContent>
-                  </Select>
+                  <Autocomplete
+                    disablePortal
+                    id="visibility"
+                    options={visibilityOptions}
+                    size="small"
+                    sx={{
+                      marginTop: "4px",
+                      outlineOffset: "3px solid rgb(14 165 233)",
+                      "&:focus-within": {
+                        outline: "3px solid rgb(14 165 233)",
+                        borderRadius: "4px",
+                      },
+                    }}
+                    renderInput={(params) => <TextField {...params} />}
+                  />
                 </div>
-
-                <Button className="mt-8" type="submit">
-                  Publish
-                </Button>
+                <div className="flex gap-4 mt-8">
+                  <Button variant="destructive" className="w-2/4">
+                    Delete
+                  </Button>
+                  <Button className="w-2/4" type="submit">
+                    Publish
+                  </Button>
+                </div>
               </div>
             </div>
           </div>
